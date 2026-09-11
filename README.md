@@ -1,7 +1,7 @@
 # Trabalho 01
 
 ## Vending Machine - LFA
-Acesse no GitHub Pages!
+Acesse no [GitHub Pages!](https://julialuzzib.github.io/vending-machine-LFA/)
 
 ### Modelagem
 
