@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vending Machine - AFD</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <div>
+                <h1>Vending Machine</h1>
+                <p>Autômato Finito com Saída — LFA</p>
+            </div>
+
+            <div class="price">
+                <span>PREÇO</span>
+                <strong>R$ 0,30</strong>
+            </div>
+        </header>
+
+        <section class="machine">
+
+            <div class="machine-left">
+
+                <div class="products">
+
+                    <div class="product">
+                        <div class="product-color blue"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color orange"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color blue"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color orange"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color orange"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color blue"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color orange"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                    <div class="product">
+                        <div class="product-color blue"></div>
+                        <span>PRODUTO</span>
+                    </div>
+
+                </div>
+
+
+                <div class="product-output">
+
+                    <div id="productMessage">
+                        AGUARDANDO COMPRA
+                    </div>
+
+                    <div class="arrow">
+                        ↓
+                    </div>
+
+                </div>
+
+            </div>
+
+            <aside class="control-panel">
+
+                <!-- VISOR -->
+
+                <div class="display">
+
+                    <div class="display-item">
+                        <span>SALDO</span>
+                        <strong id="balanceDisplay">R$ 0,00</strong>
+                    </div>
+
+                    <div class="display-item">
+                        <span>ESTADO</span>
+                        <strong id="stateDisplay">q0</strong>
+                    </div>
+
+                </div>
+
+                <div class="message" id="message">
+                    Insira uma moeda.
+                </div>
+
+                <div class="coin-buttons">
+
+                    <button class="coin-button" data-value="5">
+                        R$ 0,05
+                    </button>
+
+                    <button class="coin-button" data-value="10">
+                        R$ 0,10
+                    </button>
+
+                    <button class="coin-button" data-value="25">
+                        R$ 0,25
+                    </button>
+
+                </div>
+
+                <button id="finishButton" class="finish-button">
+
+                    FINALIZAR COMPRA
+
+                </button>
+
+                <button id="resetButton" class="reset-button">
+
+                    NOVA COMPRA
+
+                </button>
+
+            </aside>
+
+        </section>
+
+        <section class="afd-section">
+
+            <div class="section-title">
+                <span>01</span>
+
+                <div>
+                    <h2>Acompanhamento do AFD</h2>
+                    <p>
+                        Observe o estado atual e a transição realizada
+                        a cada moeda inserida.
+                    </p>
+                </div>
+            </div>
+
+            <div class="state-tracker">
+
+                <div class="state-box">
+                    <span>ESTADO ANTERIOR</span>
+                    <strong id="previousState">q0</strong>
+                </div>
+
+                <div class="transition-arrow">
+                    <span id="transitionInput">—</span>
+                    <strong>→</strong>
+                </div>
+
+                <div class="state-box current">
+                    <span>ESTADO ATUAL</span>
+                    <strong id="currentState">q0</strong>
+                </div>
+
+            </div>
+
+            <div class="automaton">
+
+                <div class="state-node initial active" data-state="0">
+                    q0
+                    <small>R$ 0,00</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node" data-state="5">
+                    q5
+                    <small>R$ 0,05</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node" data-state="10">
+                    q10
+                    <small>R$ 0,10</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node" data-state="15">
+                    q15
+                    <small>R$ 0,15</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node" data-state="20">
+                    q20
+                    <small>R$ 0,20</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node" data-state="25">
+                    q25
+                    <small>R$ 0,25</small>
+                </div>
+
+                <div class="state-line">
+                    →
+                </div>
+
+                <div class="state-node final" data-state="30">
+                    q30+
+                    <small>≥ R$ 0,30</small>
+                </div>
+
+            </div>
+
+            <div class="history-container">
+
+                <div class="history-header">
+                    <h3>Histórico de transições</h3>
+
+                    <span id="transitionCount">
+                        0 transições
+                    </span>
+                </div>
+
+                <div id="transitionHistory" class="transition-history">
+
+                    <div class="empty-history">
+                        Nenhuma transição realizada ainda.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="resultSection" class="result-section hidden">
+
+            <div class="result-icon">
+                ✓
+            </div>
+
+            <h2 id="resultTitle">
+                Compra realizada!
+            </h2>
+
+            <p id="resultMessage">
+                Retire seu produto.
+            </p>
+
+            <div class="result-values">
+
+                <div>
+                    <span>PRODUTOS</span>
+                    <strong id="productsResult">0</strong>
+                </div>
+
+                <div>
+                    <span>TROCO</span>
+                    <strong id="changeResult">R$ 0,00</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
